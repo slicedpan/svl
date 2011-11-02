@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\svl">
+      <UniqueIdentifier>{e358058d-3589-4225-bea9-884790889e50}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Basics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mat3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mat4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vec2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vec3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vec4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mat2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="app.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="svl\Basics.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\Mat.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\Mat2.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\Mat3.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\Mat4.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\SVL.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\SVLgl.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\Transform.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\Utils.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\Vec.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\Vec2.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\Vec3.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\Vec4.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
