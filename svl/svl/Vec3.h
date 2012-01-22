@@ -92,6 +92,7 @@ inline Vec3     norm(const Vec3 &v);                // v / || v ||
 inline Void     normalise(Vec3 &v);                 // v = norm(v)
 inline Vec3     cross(const Vec3 &a, const Vec3 &b);// a x b
 inline Vec2     proj(const Vec3 &v);                // hom. projection
+inline Vec3		reflect(const Vec3 &v, const Vec3 &n);
 
 std::ostream &operator << (std::ostream &s, const Vec3 &v);
 std::istream &operator >> (std::istream &s, Vec3 &v);
@@ -409,6 +410,11 @@ inline Vec2 proj(const Vec3 &v)
     result[1] = v[1] / v[2];
 
     return(result);
+}
+
+inline Vec3 reflect(const Vec3 &v, const Vec3 &n)
+{
+	return (2 * dot(v, n) * n) - v;
 }
 
 #endif

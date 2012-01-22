@@ -110,6 +110,7 @@ inline Real     len(const Vec &v);              // || v ||
 inline Real     sqrlen(const Vec &v);           // v . v
 inline Vec      norm(const Vec &v);             // v / || v ||
 inline Void     normalise(Vec &v);              // v = norm(v)
+inline Vec		reflect(const Vec &v, const Vec &n);
 
 Vec             clamped(const Vec &v, Real fuzz);
 Vec             clamped(const Vec &v);
@@ -202,6 +203,11 @@ inline Vec norm(const Vec &v)
 inline Void normalise(Vec &v)
 {
     v /= len(v);
+}
+
+inline Vec reflect(const Vec &v, const Vec &n)
+{
+	return (2 * dot(v, n) * n) - v;
 }
 
 inline Vec sub(const Vec &v, Int start, Int length)

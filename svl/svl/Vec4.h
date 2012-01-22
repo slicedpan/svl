@@ -94,6 +94,7 @@ inline Void     normalise(Vec4 &v);                 // v = norm(v)
 Vec4            cross(const Vec4 &a, const Vec4 &b, const Vec4 &c);
                                                     // 4D cross prod.
 Vec3            proj(const Vec4 &v);                // hom. projection
+inline Vec4		reflect(const Vec4 &v, const Vec4 &n);
 
 std::ostream &operator << (std::ostream &s, const Vec4 &v);
 std::istream &operator >> (std::istream &s, Vec4 &v);
@@ -375,6 +376,11 @@ inline Vec4 norm(const Vec4 &v)
 inline Void normalise(Vec4 &v)
 {
     v /= len(v);
+}
+
+inline Vec4 reflect(const Vec4 &v, const Vec4 &n)
+{
+	return (2 * dot(v, n) * n) - v;
 }
 
 #endif

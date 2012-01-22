@@ -90,6 +90,7 @@ inline Real     sqrlen(const Vec2 &v);              // v . v
 inline Vec2     norm(const Vec2 &v);                // v / || v ||
 inline Void     normalise(Vec2 &v);                 // v = norm(v)
 inline Vec2     cross(const Vec2 &v);               // cross prod.
+inline Vec2		reflect(const Vec2 &v, const Vec2 &n);
 
 std::ostream &operator << (std::ostream &s, const Vec2 &v);
 std::istream &operator >> (std::istream &s, Vec2 &v);
@@ -274,6 +275,11 @@ inline Vec2 cross(const Vec2 &a)
     result[1] = -a[0];
 
     return(result);
+}
+
+inline Vec2 reflect(const Vec2 &v, const Vec2 &n)
+{
+	return (2 * dot(v, n) * n) - v;
 }
 
 inline Real len(const Vec2 &v)
