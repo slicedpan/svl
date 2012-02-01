@@ -45,6 +45,9 @@
     <ClCompile Include="Mat2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -95,6 +98,9 @@
       <Filter>Header Files\svl</Filter>
     </ClInclude>
     <ClInclude Include="svl\Vec4.h">
+      <Filter>Header Files\svl</Filter>
+    </ClInclude>
+    <ClInclude Include="svl\Quaternion.h">
       <Filter>Header Files\svl</Filter>
     </ClInclude>
   </ItemGroup>
