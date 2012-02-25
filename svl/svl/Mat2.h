@@ -11,7 +11,7 @@
 #ifndef __Mat2__
 #define __Mat2__
 
-#include "svl/Vec2.h"
+#include "Vec2.h"
 #include "Basics.h"
 #include "Utils.h"
 

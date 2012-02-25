@@ -11,8 +11,8 @@
 #ifndef __Mat4__
 #define __Mat4__
 
-#include "svl/Vec3.h"
-#include "svl/Vec4.h"
+#include "Vec3.h"
+#include "Vec4.h"
 
 
 // --- Mat4 Class -------------------------------------------------------------

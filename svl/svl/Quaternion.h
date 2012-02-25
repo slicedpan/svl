@@ -1,120 +1,92 @@
-#pragma once
 
+#ifndef __Quaternion__
+#define __Quaternion__
 
+#include "Mat4.h"
+#include "Mat3.h"
 #include "Vec4.h"
 #include "Vec3.h"
-#include "Mat4.h"
 
-class Quaternion
+inline Mat4 qGetTransform(Vec4& quat)
 {
-public:
-	Quaternion(void);
-	Quaternion(Real w, Real i, Real j, Real k);
-	Quaternion(Vec3& axis, float angle);
-	~Quaternion();
-	Mat4 ToMatrix();
-
-	Quaternion operator+(const Quaternion& other); 
-	Quaternion operator-(const Quaternion& other);
-	Quaternion operator*(const Quaternion& other);
-	Quaternion operator/(const Quaternion& other);
-
-	Quaternion& operator=(const Quaternion& other);
-	Quaternion& operator+=(const Quaternion& other);
-	Quaternion& operator-=(const Quaternion& other);
-	Quaternion& operator*=(const Quaternion& other);
-	Quaternion& operator/=(const Quaternion& other);
-
-	Real& operator[](const int index);
-	Real Length();
-private:
-	Real elt[4];
-};
-
-inline Quaternion::Quaternion(void)
-{
-	elements.MakeZero();
+	float a = quat[0];
+	float b = quat[1];
+	float c = quat[2];
+	float d = quat[3];
+	float m00 = pow(a, 2) + pow(b, 2) - pow(c, 2) - pow(d, 2);
+	float m10 = 2 * b *c - 2 * a * d;
+	float m20 = 2 * b * d + 2 * a * c;
+	float m30 = 0.0f;
+	float m01 = 2 * b * c + 2 * a * d;
+	float m11 = pow(a, 2) - pow(b, 2) + pow(c, 2) - pow(d, 2);
+	float m21 = 2 * c * d - 2 * a * b;
+	float m31 = 0.0f;
+	float m02 = 2 * b * d - 2 * a * c;
+	float m12 = 2 * c * d + 2 * a * b;
+	float m22 = pow(a, 2) - pow(b, 2) - pow(c, 2) + pow(d, 2);
+	float m32 = 0.0f;
+	float m03 = 0.0f;
+	float m13 = 0.0f;
+	float m23 = 0.0f;
+	float m33 = 1.0f;
+	return Mat4(m00, m10, m20, m30, m01, m11, m21, m31, m02, m12, m22, m32, m03, m13, m23, m33);
 }
 
-inline Quaternion::Quaternion(Real w, Real i, Real j, Real k)
+inline Mat3 qGetMatrix(Vec4& quat)
 {
-	elt[0] = w;
-	elt[1] = i;
-	elt[2] = j;
-	elt[3] = k;
+	float a = quat[0];
+	float b = quat[1];
+	float c = quat[2];
+	float d = quat[3];
+	float m00 = pow(a, 2) + pow(b, 2) - pow(c, 2) - pow(d, 2);
+	float m10 = 2 * b *c - 2 * a * d;
+	float m20 = 2 * b * d + 2 * a * c;
+	float m01 = 2 * b * c + 2 * a * d;
+	float m11 = pow(a, 2) - pow(b, 2) + pow(c, 2) - pow(d, 2);
+	float m21 = 2 * c * d - 2 * a * b;
+	float m02 = 2 * b * d - 2 * a * c;
+	float m12 = 2 * c * d + 2 * a * b;
+	float m22 = pow(a, 2) - pow(b, 2) - pow(c, 2) + pow(d, 2);
+	return Mat3(m00, m10, m20, m01, m11, m21, m02, m12, m22);
 }
 
-inline Quaternion::Quaternion(Vec3& axis, float angle)
+inline Vec4 qMultiply(Vec4 q1, Vec4 q2)
 {
-	Real s = sin(angle / 2.0f);
-	elt[0] = cos(angle / 2.0f);
-	elt[1] = s * axis[0];
-	elt[2] = s * axis[1];
-	elt[3] = s * axis[2];
+	Vec4 retVec;
+
+	float a1 = q1[0];
+	float b1 = q1[1];
+	float c1 = q1[2];
+	float d1 = q1[3];
+
+	float a2 = q2[0];
+	float b2 = q2[1];
+	float c2 = q2[2];
+	float d2 = q2[3];
+
+	retVec[0] = a1 * a2 - b1 * b2 - c1 * c2 - d1 * d2;
+	retVec[1] = a1 * b2 + b1 * a2 + c1 * d2 - d1 * c2;
+	retVec[2] = a1 * c2 - b1 * d2 + c1 * a2 + d1 * b2;
+	retVec[3] = a1 * d2 + b1 * c2 - c1 * b2 + d1 * a2;
+/*
+	retVec[0] = q1[0] * q2[0] - q1[1] * q2[1] - q1[2] * q2[2] - q1[3] * q2[3];
+	retVec[1] = q1[0] * q2[1] - q1[1] * q2[0] + q1[2] * q2[3] - q1[3] * q2[2];
+	retVec[2] = q1[0] * q2[2] - q1[1] * q2[3] + q1[2] * q2[0] + q1[3] * q2[1];
+	retVec[3] = q1[0] * q2[3] + q1[1] * q2[2] - q1[2] * q2[1] + q1[3] * q2[0];*/
+	return retVec;
 }
 
-inline Quaternion Quaternion::operator + (const Quaternion& other)
-{
-	return Quaternion(elements[0] + other[0], elements[1] + other[1], elements[2] + other[2], elements[3] + other[3]);
+inline Vec3 qAxisAngle(Vec4 q1)
+{	
+	float angle = 2 * acos(q1[0]);
+	if (angle == 0.0f)
+		return Vec3(0.0, 0.0, 0.0);
+	Vec3 retVec(q1[1], q1[2], q1[3]);
+	float length = len(retVec);
+	if (length < 0.00001f)
+		return Vec3(0.0, 0.0, 0.0);
+	return retVec * (angle);
 }
 
-inline Quaternion& Quaternion::operator = (const Quaternion& other)
-{		
-	elt[0] = other[0];
-	elt[1] = other[1];
-	elt[2] = other[2];
-	elt[3] = other[3];
-	return *this;
-}
-
-inline Real& Quaternion::operator[] (int index)
-{
-	return elt[index];
-}
-
-inline Quaternion& Quaternion::operator+=(const Quaternion& other)
-{
-	elt[0] += other[0];
-	elt[1] += other[1];
-	elt[2] += other[2];
-	elt[3] += other[3];
-	return *this;
-}
-
-inline Quaternion& Quaternion::operator-=(const Quaternion& other)
-{
-	elt[0] -= other[0];
-	elt[1] -= other[1];
-	elt[2] -= other[2];
-	elt[3] -= other[3];
-	return *this;
-}
-
-inline Quaternion& Quaternion::operator*=(const Quaternion& other)
-{
-	Quaternion tmp;
-	tmp[0] = elt[0] * other[0] - elt[1] * other[1] - elt[2] * other[2] - elt[3] * other[3];
-	tmp[1] = elt[0] * other[1] - elt[1] * other[0] + elt[2] * other[3] - elt[3] * other[2];
-	tmp[2] = elt[0] * other[2] - elt[1] * other[3] + elt[2] * other[0] + elt[3] * other[1];
-	tmp[3] = elt[0] * other[3] + elt[1] * other[2] - elt[2] * other[1] + elt[3] * other[0];
-	*this = tmp;
-	return *this;
-}
-
-inline Quaternion Quaternion::operator*(const Quaternion& lhs, const Quaternion& rhs)
-{
-	
-}
-
-inline Quaternion& Quaternion::operator/=(const Quaternion& other)
-{
-	Quaternion tmp;
-	tmp = 
-}
-
-inline Real Quaternion::Length()
-{
-	return sqrt(pow(elt[0], 2.0f), pow(elt[1], 2.0f), pow(elt[2], 2.0f), pow(elt[3], 2.0f));
-}
-
+#endif
 

@@ -25,19 +25,21 @@
 
 #include <iostream>
 
-#include "svl/Basics.h"
-#include "svl/Utils.h"
+#include "Basics.h"
+#include "Utils.h"
 
-#include "svl/Vec2.h"
-#include "svl/Vec3.h"
-#include "svl/Vec4.h"
-#include "svl/Vec.h"
+#include "Vec2.h"
+#include "Vec3.h"
+#include "Vec4.h"
+#include "Vec.h"
 
-#include "svl/Mat2.h"
-#include "svl/Mat3.h"
-#include "svl/Mat4.h"
-#include "svl/Mat.h"
+#include "Mat2.h"
+#include "Mat3.h"
+#include "Mat4.h"
+#include "Mat.h"
 
-#include "svl/Transform.h"
+#include "Quaternion.h"
+
+#include "Transform.h"
 
 #endif

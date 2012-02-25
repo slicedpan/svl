@@ -83,7 +83,6 @@
     <ClCompile Include="Mat2.cpp" />
     <ClCompile Include="Mat3.cpp" />
     <ClCompile Include="Mat4.cpp" />
-    <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="Vec.cpp" />
     <ClCompile Include="Vec2.cpp" />
     <ClCompile Include="Vec3.cpp" />

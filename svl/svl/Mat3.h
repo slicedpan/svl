@@ -11,7 +11,7 @@
 #ifndef __Mat3__
 #define __Mat3__
 
-#include "svl/Vec3.h"
+#include "Vec3.h"
 #include "Basics.h"
 #include "Utils.h"
 

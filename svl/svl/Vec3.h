@@ -1,4 +1,4 @@
-/*
+ /*
     File:           Vec3.h
 
     Function:       Defines a length-3 vector.
